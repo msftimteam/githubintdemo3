@@ -1,0 +1,10 @@
+{
+	"name": "AzureStorageLinkedService",
+	"properties": {
+		"type": "AzureStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=lijzha;AccountKey=**********;"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}
