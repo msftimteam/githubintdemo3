@@ -1,6 +1,7 @@
 {
 	"name": "pipeline5",
 	"properties": {
+		"description": "test",
 		"activities": [
 			{
 				"name": "CopyFromBlobToBlob",
