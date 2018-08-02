@@ -6,50 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory Name",
 			"defaultValue": "lijzhaGHEFactory"
-		},
-		"AzureStorageLinkedService_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AzureStorageLinkedService'"
-		},
-		"AzureBlob1_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "test_input.txt"
-		},
-		"AzureBlob1_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "adftutorial/input"
-		},
-		"AzureBlobTestRenamed2_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "test_input.txt"
-		},
-		"AzureBlobTestRenamed2_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "adftutorial/input"
-		},
-		"InputDataset_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "test_input.txt"
-		},
-		"InputDataset_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "adftutorial/input"
-		},
-		"OutputDataset_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "@CONCAT(pipeline().RunId, '.txt')"
-		},
-		"OutputDataset_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "adftutorial/output"
-		},
-		"testDatasetRenamed_properties_typeProperties_fileName": {
-			"type": "string",
-			"defaultValue": "test_input.txt"
-		},
-		"testDatasetRenamed_properties_typeProperties_folderPath": {
-			"type": "string",
-			"defaultValue": "adftutorial/input"
 		}
 	},
 	"variables": {
@@ -66,7 +22,6 @@
 						"name": "GitHubCopyFromBlobToBlob",
 						"description": "testtestsetes",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -96,20 +51,17 @@
 						"inputs": [
 							{
 								"referenceName": "InputDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "OutputDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/InputDataset')]",
@@ -126,7 +78,6 @@
 						"name": "GitHubCopyFromBlobToBlob",
 						"description": "testtestsetes",
 						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -156,20 +107,17 @@
 						"inputs": [
 							{
 								"referenceName": "InputDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "OutputDataset",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
-				],
-				"annotations": []
+				]
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/InputDataset')]",
@@ -184,10 +132,8 @@
 				"description": "test dataset",
 				"linkedServiceName": {
 					"referenceName": "AzureStorageLinkedService",
-					"type": "LinkedServiceReference",
-					"parameters": {}
+					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureBlob",
 				"typeProperties": {
 					"format": {
@@ -198,13 +144,10 @@
 						"skipLineCount": 0,
 						"firstRowAsHeader": false
 					},
-					"fileName": "[parameters('AzureBlob1_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('AzureBlob1_properties_typeProperties_folderPath')]"
+					"fileName": "test_input.txt",
+					"folderPath": "adftutorial/input"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/AzureBlobTestRenamed2')]",
@@ -214,10 +157,8 @@
 				"description": "test dataset",
 				"linkedServiceName": {
 					"referenceName": "AzureStorageLinkedService",
-					"type": "LinkedServiceReference",
-					"parameters": {}
+					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureBlob",
 				"typeProperties": {
 					"format": {
@@ -228,13 +169,10 @@
 						"skipLineCount": 0,
 						"firstRowAsHeader": false
 					},
-					"fileName": "[parameters('AzureBlobTestRenamed2_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('AzureBlobTestRenamed2_properties_typeProperties_folderPath')]"
+					"fileName": "test_input.txt",
+					"folderPath": "adftutorial/input"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/InputDataset')]",
@@ -243,10 +181,8 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureStorageLinkedService",
-					"type": "LinkedServiceReference",
-					"parameters": {}
+					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureBlob",
 				"typeProperties": {
 					"format": {
@@ -258,13 +194,10 @@
 						"skipLineCount": 0,
 						"firstRowAsHeader": false
 					},
-					"fileName": "[parameters('InputDataset_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('InputDataset_properties_typeProperties_folderPath')]"
+					"fileName": "test_input.txt",
+					"folderPath": "adftutorial/input"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/OutputDataset')]",
@@ -273,10 +206,8 @@
 			"properties": {
 				"linkedServiceName": {
 					"referenceName": "AzureStorageLinkedService",
-					"type": "LinkedServiceReference",
-					"parameters": {}
+					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureBlob",
 				"typeProperties": {
 					"format": {
@@ -288,15 +219,12 @@
 						"firstRowAsHeader": false
 					},
 					"fileName": {
-						"value": "[parameters('OutputDataset_properties_typeProperties_fileName')]",
+						"value": "@CONCAT(pipeline().RunId, '.txt')",
 						"type": "Expression"
 					},
-					"folderPath": "[parameters('OutputDataset_properties_typeProperties_folderPath')]"
+					"folderPath": "adftutorial/output"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
-			]
+			}
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/testDatasetRenamed')]",
@@ -306,10 +234,8 @@
 				"description": "test dataset",
 				"linkedServiceName": {
 					"referenceName": "AzureStorageLinkedService",
-					"type": "LinkedServiceReference",
-					"parameters": {}
+					"type": "LinkedServiceReference"
 				},
-				"annotations": [],
 				"type": "AzureBlob",
 				"typeProperties": {
 					"format": {
@@ -320,25 +246,10 @@
 						"skipLineCount": 0,
 						"firstRowAsHeader": false
 					},
-					"fileName": "[parameters('testDatasetRenamed_properties_typeProperties_fileName')]",
-					"folderPath": "[parameters('testDatasetRenamed_properties_typeProperties_folderPath')]"
+					"fileName": "test_input.txt",
+					"folderPath": "adftutorial/input"
 				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureStorageLinkedService')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureStorageLinkedService')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "AzureStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AzureStorageLinkedService_connectionString')]"
-				}
-			},
-			"dependsOn": []
+			}
 		}
 	]
 }
